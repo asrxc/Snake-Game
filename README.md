@@ -23,7 +23,7 @@ Any other editor-
 3. The speed of the snake increases everytime you eat the fruit, denoted by 'F'.
 4. Everytime you eat the fruit ,your score is increased by '10' and displayed on bottom left.
 
-# Concept
+# Concepts
 
 1. 2D-Arrays
 2. Function calling
