@@ -1,18 +1,17 @@
 # Snake-Game
 Simulation of a simple Snake game made using C++ in Visual Studio IDE.   
 
-Technology: 
+Technology:
+
 C++ 14, Visual Studio IDE
 
 Instructions:
 
 If you have Visual Studio IDE-
-
 1. Download the 'Snake Game' project.
 2. Unzip and open the 'SnakeGame.sln' file.
 
 Any other editor-
-
 1. Go to Snake-Game/Snake Game/SnakeGame/SnakeGame.cpp 
 2. Download the cpp file.
 
