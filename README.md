@@ -30,11 +30,11 @@ Any other editor-
 3. For loops, while loop
 4. Switch cases
 
-# Challanges faced:
+# Challanges faced
 
 1. Logic of the tail of the snake.
 2. Printing the tail of the snake.
 
-# Updates:
+# Updates
 
 Would like to add more features to this game ! 
