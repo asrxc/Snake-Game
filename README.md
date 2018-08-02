@@ -1,4 +1,4 @@
-# Snake-Game - How to play?
+ # Snake Game - How to play?
 Simulation of a simple Snake game made using C++ in Visual Studio IDE. 
 Press 'w','a','s','d' to move the snake Up, Down, Right & Left & try to eat the fruit!
 
