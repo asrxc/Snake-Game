@@ -1,4 +1,4 @@
- # Snake Game - How to play?
+as # Snake Game - How to play?
 Simulation of a simple Snake game made using C++ in Visual Studio IDE. 
 Press 'w','a','s','d' to move the snake Up, Down, Right & Left & try to eat the fruit!
 
@@ -18,10 +18,10 @@ Any other editor-
 
 # Description
 
-1. This game mimics the popular Snake game in which the snake eats fruit & its length increases everytime it eats a fruit.
+1. This game mimics the popular Snake game in which the snake eats fruit & its length increases everytime it as a fruit is eaten.
 2. If you reach the boundary of the square area you are respawned from the opposite side.
 3. The speed of the snake increases everytime you eat the fruit, denoted by 'F'.
-4. Everytime you eat the fruit ,your score is increased by '10' and displayed on bottom left.
+4. Everytime you eat the fruit ,your score is increased by 10 and displayed on bottom left.
 
 # Concepts
 
