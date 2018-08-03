@@ -38,4 +38,4 @@ Any other editor-
 
 # Updates
 
-Game is always availabe for more features ! 
+Game is always availabe for addition of more features ! 
