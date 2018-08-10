@@ -31,6 +31,7 @@ Any other editor-
 3. For loops, while loop
 4. Switch cases
 5. Enumeration
+6. Object oriented programming
 
 # Challanges faced
 
