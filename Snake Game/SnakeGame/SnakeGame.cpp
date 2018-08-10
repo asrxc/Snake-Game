@@ -9,7 +9,7 @@
 #include<stdio.h>
 using namespace std;
 
-static int height=20, width=20;							//BOUNDARIES OF THE GAME SQUARE
+static int height=20, width=20;														//BOUNDARIES OF THE GAME SQUARE
 bool GameOver;
 int x, y,fruitX,fruitY,score=0,a,b,sleep_interval=70,nTail=0,tailX[50],tailY[50];
 /*
@@ -23,22 +23,30 @@ tailX[],tailY[] : ARRAYS FOR STORING TALE POSITIONS
 enum Edirection{STOP=0,LEFT,RIGHT,UP,DOWN};
 Edirection dir;
 
+class Game
+{
+public:
+	void Setup();
+	void Logic();
+	void Input();
+	void Draw();
 
-void Setup()									//RUNS INITIALLY EVERYTIME THE GAME STARTS
+};
+
+void Game:: Setup()																	//RUNS INITIALLY EVERYTIME THE GAME STARTS
 {
 	GameOver = false;
 	dir = STOP;
 	x = width % 2;								
 	y = height % 2;
 	fruitX = rand() % width;
-	fruitY = rand() % height;						//FOR RANDOMLY PRINTING FRUIT INSIDE THE GAME SQUARE
+	fruitY = rand() % height;														//FOR RANDOMLY PRINTING FRUIT INSIDE THE GAME SQUARE
 
 }
 
-
-void Logic()
+void Game:: Logic()
 {
-	int prevX, prevY, prev2X, prev2Y;					//LOGIC FOR PRINTING TAIL OF SNAKE
+	int prevX, prevY, prev2X, prev2Y;												//LOGIC FOR PRINTING TAIL OF SNAKE
 	prevX = tailX[0];
 	prevY = tailY[0];
 	tailX[0] = x, tailY[0] = y;
@@ -52,7 +60,7 @@ void Logic()
 		prevY = prev2Y;
 	}
 
-	switch (dir)								//FOR CHANGING THE DIRECTION ACCORDING TO INPUT 
+	switch (dir)																	//FOR CHANGING THE DIRECTION ACCORDING TO INPUT 
 	{
 	case UP:
 		y--;
@@ -71,14 +79,14 @@ void Logic()
 	}
 
 	/*if (x > width || x< 0 || y > height || y < 0)
-	{									//IN ORDER TO LOCK BOUNDARIES FOR SNAKE REMOVE THESE AS COMMENT
+	{																				//IN ORDER TO LOCK BOUNDARIES FOR SNAKE REMOVE THESE AS COMMENT
 		GameOver = true;
 	}*/
 	
-	if (x > width) x = 0; if (x < 0) x = width - 1;				//PUT THESE TO LINES AS COMMENT TO LOCK BOUNDRIES FOR SNAKE
+	if (x > width) x = 0; if (x < 0) x = width - 1;									//PUT THESE TO LINES AS COMMENT TO LOCK BOUNDRIES FOR SNAKE
 	if (y > height) y = 0; if (y < 0) y = height - 1;
 
-	for (int i = 0; i < nTail; i++)						//GAME OVERS IF SNAKE TOUCHES IT'S TAIL
+	for (int i = 0; i < nTail; i++)													//GAME OVERS IF SNAKE TOUCHES IT'S TAIL
 	{
 		if (tailX[i] == x && tailY[i] == y)
 		{
@@ -86,7 +94,7 @@ void Logic()
 		}
 	}
 	
-	if (x == fruitX && y == fruitY)						//IF SNAKE EATS FRUIT SCORE & TAIL SIZE IS INCREASED BUT sleep_interval is DECREASED
+	if (x == fruitX && y == fruitY)													//IF SNAKE EATS FRUIT SCORE & TAIL SIZE IS INCREASED BUT sleep_interval is DECREASED
 	{
 		score += 10;
 		fruitX = rand() % width;
@@ -102,7 +110,7 @@ void Logic()
 	cout << "Score: " << score << endl;
 }
 
-void Input()									//FUNCTION DETECTS WHICH INPUT IS BEING GIVEN AND SETS VALUE OF dir ACCORDING TO IT 
+void Game:: Input()																	//FUNCTION DETECTS WHICH INPUT IS BEING GIVEN AND SETS VALUE OF dir ACCORDING TO IT 
 {
 	if (_kbhit())
 	{
@@ -130,11 +138,11 @@ void Input()									//FUNCTION DETECTS WHICH INPUT IS BEING GIVEN AND SETS VALU
 
 }
  
-void Draw()									//DRAW FUNCTION IS USED TO PRINT ALL COMPONENTS IN SNAKE GAME
+void Game:: Draw()																	//DRAW FUNCTION IS USED TO PRINT ALL COMPONENTS IN SNAKE GAME
 {
 	
 	system("cls");
-	for ( a = 0; a < width + 2; a++)					//PRINTS THE UPPER HORIZONTAL GAME BOUNDARY
+	for ( a = 0; a < width + 2; a++)												//PRINTS THE UPPER HORIZONTAL GAME BOUNDARY
 	{
 		cout << "* ";
 	}
@@ -145,18 +153,18 @@ void Draw()									//DRAW FUNCTION IS USED TO PRINT ALL COMPONENTS IN SNAKE GAM
 		{
 
 
-			if (b == 0)						//PRINTS THE VERTICAL GAME BOUNDARY ON THE LEFT SIDE
+			if (b == 0)																//PRINTS THE VERTICAL GAME BOUNDARY ON THE LEFT SIDE
 			{
 				cout << "* ";
 			}
 
 
-			if (a == y && b == x)					//PRINTS SNAKE HEAD
+			if (a == y && b == x)													//PRINTS SNAKE HEAD
 			{
 				cout << "O ";
 			}
 
-			else if (a == fruitY && b == fruitX)			//PRINTS THE FRUIT
+			else if (a == fruitY && b == fruitX)									//PRINTS THE FRUIT
 			{
 				cout << "F ";
 			}
@@ -164,7 +172,7 @@ void Draw()									//DRAW FUNCTION IS USED TO PRINT ALL COMPONENTS IN SNAKE GAM
 			else
 			{
 				bool print = false;
-				for (int k = 0; k < nTail; k++)			//PRINTS THE SNAKE TALE 
+				for (int k = 0; k < nTail; k++)										//PRINTS THE SNAKE TALE 
 					{
 						if (tailX[k] == b && tailY[k] == a)
 							{
@@ -178,7 +186,7 @@ void Draw()									//DRAW FUNCTION IS USED TO PRINT ALL COMPONENTS IN SNAKE GAM
 			}
 		
 
-		if( b == width - 1)						//PRINTS THE VERTICAL GAME BOUNDARY ON THE RIGHT SIDE
+		if( b == width - 1)															//PRINTS THE VERTICAL GAME BOUNDARY ON THE RIGHT SIDE
 			{
 			cout << "* ";
 			}
@@ -187,7 +195,7 @@ void Draw()									//DRAW FUNCTION IS USED TO PRINT ALL COMPONENTS IN SNAKE GAM
 	cout << endl;
 
 }
-for (a = 0; a <width + 2; a++)							//PRINTS THE LOWER HORIZONTAL GAME BOUNDARY
+for (a = 0; a <width + 2; a++)														//PRINTS THE LOWER HORIZONTAL GAME BOUNDARY
 {
 	cout << "* ";
 }
@@ -198,14 +206,15 @@ cout << endl;
 
 int main()
 {
-	Setup();								//GAME IS INITIALIZED AND FUNCTIONS ARE CALLED
+	Game obj;
+	obj.Setup();																	//GAME IS INITIALIZED AND FUNCTIONS ARE CALLED
 	while (!GameOver)
 	{
-		Draw();
-		Input();
-		Logic();
+		obj.Draw();
+		obj.Input();
+		obj.Logic();
 		if (sleep_interval == 1)
-		cout << "Full Speed!" << endl;					//IS DISPLAYED WHEN SNAKE IS IN FULL SPEED
+		cout << "Full Speed!" << endl;												//IS DISPLAYED WHEN SNAKE IS IN FULL SPEED
 		Sleep(sleep_interval);
 	}
 	
